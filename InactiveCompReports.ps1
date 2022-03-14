@@ -3,7 +3,7 @@
 Import-Module ActiveDirectory
 
 Write-Host ""
-$InactiveDays = Read-Host "Please indicate how many days beyond that the AD computers are inactive: "
+$InactiveDays = Read-Host "Please indicate minimum days of AD computers inactivity: "
 $InactiveDate = (Get-Date).AddDays(-($InactiveDays))
 
 $InactiveComps = Get-ADComputer -Filter {LastLogonDate -lt $InactiveDate -and Enabled -eq $true} -Properties LastLogonDate `
