@@ -12,3 +12,5 @@ $InactiveComps = Get-ADComputer -Filter {LastLogonDate -lt $InactiveDate -and En
 
 # Please indicate destination path within the script.
 $InactiveComps | Export-Csv C:\InactiveComps.csv
+
+Write-Host "Export of .csv file was succesful."
