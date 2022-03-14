@@ -1,1 +1,1 @@
-Get-ADUser -Properties * -Filter * | Export-CSV "C:\..."
+Get-ADUser -Properties * -Filter * | Export-CSV C:\ADUsers.csv
