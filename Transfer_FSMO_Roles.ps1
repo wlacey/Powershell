@@ -29,7 +29,7 @@ Get-ADDomain | Format-List InfrastructureMaster, PDCEmulator, RIDMaster
     5 {$ValidRole = 'RIDMaster'}
 }
 
-# Validate the admin's input.
+ # Validate the admin's input.
  if ($Role -lt 1 -or $Role -gt 5) {
  Write-Host "ERROR - Must input a number corresponding to the FSMO role."
  }
@@ -40,9 +40,26 @@ Get-ADDomain | Format-List InfrastructureMaster, PDCEmulator, RIDMaster
   Write-host "$ValidRole has been transferred to $TargetDC."
   }
 
-   # Transfer Schema Master role to the target server.
+  # Transfer Schema Master role to the target server.
   if ($Role -eq 2) {
   Move-ADDirectoryServerOperationMasterRole -OperationMasterRole SchemaMaster -Identity $TargetDC -confirm:$true
   Write-host "$ValidRole has been transferred to $TargetDC."
   }
 
+  # Transfer Infrastructure Master role to the target server.
+  if ($Role -eq 3) {
+  Move-ADDirectoryServerOperationMasterRole -OperationMasterRole InfrastructureMaster -Identity $TargetDC -confirm:$true
+  Write-host "$ValidRole has been transferred to $TargetDC."
+  }
+
+  # Transfer PDC Emulator role to the target server.
+  if ($Role -eq 4) {
+  Move-ADDirectoryServerOperationMasterRole -OperationMasterRole PDCEmulator -Identity $TargetDC -confirm:$true
+  Write-host "$ValidRole has been transferred to $TargetDC."
+  }
+
+  # Transfer RID Master role to the target server.
+  if ($Role -eq 5) {
+  Move-ADDirectoryServerOperationMasterRole -OperationMasterRole RIDMaster -Identity $TargetDC -confirm:$true
+  Write-host "$ValidRole has been transferred to $TargetDC."
+  }
