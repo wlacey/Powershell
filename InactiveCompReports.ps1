@@ -1,4 +1,5 @@
 # Inactive Computer Report
+# Will be exported to a .csv file.
 
 Import-Module ActiveDirectory
 
