@@ -5,7 +5,7 @@ Import-Module ActiveDirectory
 # Please provide path for .csv file in the script.
 Import-CSV "C:\UsersToDIsable.csv" `
 | ForEach-Object {
-    $UserAcct = $_."samAccountName"
+    $UserAcct = $_."SamAccountName"
     try {
         Get-ADUser -Identity $UserAcct | DisableADAccount
     }
